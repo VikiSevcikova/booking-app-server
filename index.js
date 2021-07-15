@@ -12,7 +12,10 @@ app.use(express.urlencoded({
 app.use(cors());
 
 const YOUR_DOMAIN = "https://vikisevcikova.github.io/booking-app-m/#/";
-console.log(process.env.STRIPE_SECRET_KEY)
+app.get("/", (req, res) => {
+  res.send('Hello to booking back-end')
+});
+
 app.post("/payment", cors(), async (req, res) => {
     let {booking, customer} = req.body;
     try {
