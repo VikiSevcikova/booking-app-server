@@ -8,13 +8,14 @@ app.use(express.json());
 app.use(express.urlencoded({
   extended: true
 }));
-
 app.use(cors());
 
-const YOUR_DOMAIN = "https://vikisevcikova.github.io/booking-app-m/#/";
+const YOUR_DOMAIN = "https://vikisevcikova.github.io/booking-app-m/";
 app.get("/", (req, res) => {
   res.send('Hello to booking back-end')
 });
+console.log(`.env.${process.env.NODE_ENV}`)
+console.log(process.env.STRIPE_SECRET_KEY)
 
 app.post("/payment", cors(), async (req, res) => {
     let {booking, customer} = req.body;
